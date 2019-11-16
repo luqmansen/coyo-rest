@@ -1,0 +1,62 @@
+{
+	"ImportPath": "github.com/luqmansen/coyo-rest",
+	"GoVersion": "go1.12",
+	"GodepVersion": "v80",
+	"Deps": [
+		{
+			"ImportPath": "github.com/go-sql-driver/mysql",
+			"Comment": "v1.4.0-42-gb4242ba",
+			"Rev": "b4242bab7dc57d57fef955900943999b6fb34b67"
+		},
+		{
+			"ImportPath": "github.com/gorilla/mux",
+			"Comment": "v1.7.3-9-g884b5ff",
+			"Rev": "884b5ffcbd3a11b730f0b75f5c86ac408753c34d"
+		},
+		{
+			"ImportPath": "github.com/jinzhu/gorm",
+			"Comment": "v1.9.11",
+			"Rev": "81c17a7e2529c59efc4e74c5b32c1fb71fb12fa2"
+		},
+		{
+			"ImportPath": "github.com/jinzhu/gorm/dialects/mysql",
+			"Comment": "v1.9.11",
+			"Rev": "81c17a7e2529c59efc4e74c5b32c1fb71fb12fa2"
+		},
+		{
+			"ImportPath": "github.com/jinzhu/gorm/dialects/postgres",
+			"Comment": "v1.9.11",
+			"Rev": "81c17a7e2529c59efc4e74c5b32c1fb71fb12fa2"
+		},
+		{
+			"ImportPath": "github.com/jinzhu/inflection",
+			"Comment": "v1.0.0",
+			"Rev": "f5c5f50e6090ae76a29240b61ae2a90dd810112e"
+		},
+		{
+			"ImportPath": "github.com/joho/godotenv",
+			"Comment": "v1.3.0-12-g2be6388",
+			"Rev": "2be6388c6677f288bfc7dd5a95c23aa20a9c9098"
+		},
+		{
+			"ImportPath": "github.com/lib/pq",
+			"Comment": "v1.2.0-12-g931b5ae",
+			"Rev": "931b5ae4c24e6810c8c82ab4734904de3df1c3dc"
+		},
+		{
+			"ImportPath": "github.com/lib/pq/hstore",
+			"Comment": "v1.2.0-12-g931b5ae",
+			"Rev": "931b5ae4c24e6810c8c82ab4734904de3df1c3dc"
+		},
+		{
+			"ImportPath": "github.com/lib/pq/oid",
+			"Comment": "v1.2.0-12-g931b5ae",
+			"Rev": "931b5ae4c24e6810c8c82ab4734904de3df1c3dc"
+		},
+		{
+			"ImportPath": "github.com/lib/pq/scram",
+			"Comment": "v1.2.0-12-g931b5ae",
+			"Rev": "931b5ae4c24e6810c8c82ab4734904de3df1c3dc"
+		}
+	]
+}
