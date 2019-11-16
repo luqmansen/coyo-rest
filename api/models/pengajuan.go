@@ -7,16 +7,17 @@ import (
 )
 
 type Pengajuan struct {
-	ID             uint64    `gorm:"primary_key;auto_increment" json:"id"`
-	Nama           string    `gorm:"size:255;not null;" json:"nama"`
-	Telepon        string    `gorm:"size:255;not null;" json:"telepon"`
-	TempatLahir    string    `gorm:"size:255;not null;" json:"tempat_lahir"`
-	TanggalLahir   string    `gorm:"size:255;not null;" json:"tanggal_lahir"`
-	KotaDomisili   string    `gorm:"size:255;not null;" json:"kota_domisili"`
-	AjuanKTA       string    `gorm:"foreign_key" json:"ajuan_kta"`
-	JumlahPinjaman string    `gorm:"foreign_key" json:"jumlah_pinjaman"`
-	CreatedAt      time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"created_at"`
-	UpdatedAt      time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"updated_at"`
+	ID                uint64    `gorm:"primary_key;auto_increment" json:"id"`
+	Nama              string    `gorm:"size:255;not null;" json:"nama"`
+	Telepon           string    `gorm:"size:255;not null;" json:"telepon"`
+	TempatLahir       string    `gorm:"size:255;not null;" json:"tempat_lahir"`
+	TanggalLahir      string    `gorm:"size:255;not null;" json:"tanggal_lahir"`
+	KotaDomisili      string    `gorm:"size:255;not null;" json:"kota_domisili"`
+	AjuanKTA          string    `gorm:"size:255;not null" json:"ajuan_kta"`
+	JumlahPenghasilan string    `gorm:"size:255;not null" json:"pengasilan"`
+	JumlahPinjaman    string    `gorm:"size:255;not null" json:"jumlah_pinjaman"`
+	CreatedAt         time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"created_at"`
+	UpdatedAt         time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"updated_at"`
 }
 
 func (p *Pengajuan) PreparePengajuan() {
