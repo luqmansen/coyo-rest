@@ -10,7 +10,7 @@ import (
 	"net/http"
 )
 
-func (server *Server) AddEntry(w http.ResponseWriter, r *http.Request) {
+func (server *Server) AddEntryKTA(w http.ResponseWriter, r *http.Request) {
 
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -23,8 +23,8 @@ func (server *Server) AddEntry(w http.ResponseWriter, r *http.Request) {
 		responses.ERROR(w, http.StatusUnprocessableEntity, err)
 		return
 	}
-	data.Prepare()
-	err = data.Validate()
+	data.PrepareKTA()
+	err = data.ValidateKTA()
 	if err != nil {
 		responses.ERROR(w, http.StatusUnprocessableEntity, err)
 		return
@@ -38,7 +38,7 @@ func (server *Server) AddEntry(w http.ResponseWriter, r *http.Request) {
 	//	responses.ERROR(w, http.StatusUnauthorized, errors.New(http.StatusText(http.StatusUnauthorized)))
 	//	return
 	//}
-	dataCreated, err := data.AddEntry(server.DB)
+	dataCreated, err := data.AddEntryKTA(server.DB)
 	if err != nil {
 		formattedError := formaterror.FormatError(err.Error())
 		responses.ERROR(w, http.StatusInternalServerError, formattedError)
@@ -132,8 +132,8 @@ func (server *Server) GetKTAs(w http.ResponseWriter, r *http.Request) {
 //		return
 //	}
 //
-//	postUpdate.Prepare()
-//	err = postUpdate.Validate()
+//	postUpdate.PrepareKTA()
+//	err = postUpdate.ValidateKTA()
 //	if err != nil {
 //		responses.ERROR(w, http.StatusUnprocessableEntity, err)
 //		return

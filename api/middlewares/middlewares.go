@@ -1,8 +1,7 @@
 package middlewares
 
 import (
-
-		"net/http"
+	"net/http"
 )
 
 func SetMiddlewareJSON(next http.HandlerFunc) http.HandlerFunc {
@@ -11,6 +10,7 @@ func SetMiddlewareJSON(next http.HandlerFunc) http.HandlerFunc {
 		next(w, r)
 	}
 }
+
 //
 //func SetMiddlewareAuthentication(next http.HandlerFunc) http.HandlerFunc {
 //	return func(w http.ResponseWriter, r *http.Request) {

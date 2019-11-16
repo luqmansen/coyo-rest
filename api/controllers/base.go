@@ -13,8 +13,6 @@ import (
 
 	_ "github.com/jinzhu/gorm/dialects/mysql"    //mysql database driver
 	_ "github.com/jinzhu/gorm/dialects/postgres" //postgres database driver
-
-
 )
 
 type Server struct {
@@ -26,18 +24,16 @@ func (server *Server) Initialize(Dbdriver, DbUser, DbPassword, DbPort, DbHost, D
 
 	var err error
 
-	if Dbdriver == "postgres" {
-		DBURL := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", DbHost, DbPort, DbUser, DbName, DbPassword)
-		server.DB, err = gorm.Open(Dbdriver, DBURL)
-		if err != nil {
-			fmt.Printf("Cannot connect to %s database", Dbdriver)
-			log.Fatal("This is the error:", err)
-		} else {
-			fmt.Printf("We are connected to the %s database", Dbdriver)
-		}
+	DBURL := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s", DbHost, DbPort, DbUser, DbName, DbPassword)
+	server.DB, err = gorm.Open(Dbdriver, DBURL)
+	if err != nil {
+		fmt.Printf("Cannot connect to %s database", Dbdriver)
+		log.Fatal("This is the error:", err)
+	} else {
+		fmt.Printf("We are connected to the %s database", Dbdriver)
 	}
 
-	server.DB.Debug().AutoMigrate(&models.KTA{},) //database migration
+	server.DB.Debug().AutoMigrate(&models.KTA{}, &models.User{}, &models.Pengajuan{}) //database migration
 
 	server.Router = mux.NewRouter()
 
