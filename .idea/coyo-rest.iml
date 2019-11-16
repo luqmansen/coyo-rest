@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="GoLibraries">
+    <option name="urls">
+      <list>
+        <option value="file://$MODULE_DIR$/../../badoux" />
+        <option value="file://$MODULE_DIR$/../../BurntSushi" />
+        <option value="file://$MODULE_DIR$/../../dgrijalva" />
+        <option value="file://$MODULE_DIR$/../../go-sql-driver" />
+        <option value="file://$MODULE_DIR$/../../gorilla" />
+        <option value="file://$MODULE_DIR$/../../jinzhu" />
+        <option value="file://$MODULE_DIR$/../../joho" />
+        <option value="file://$MODULE_DIR$/../../lib" />
+        <option value="file://$MODULE_DIR$/../../satori" />
+        <option value="file://$MODULE_DIR$/.." />
+        <option value="file://$MODULE_DIR$/../../tools" />
+        <option value="file://$MODULE_DIR$/../../../golang.org" />
+        <option value="file://$MODULE_DIR$/../../x" />
+        <option value="file://$MODULE_DIR$/../../../gopkg.in" />
+      </list>
+    </option>
+  </component>
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
