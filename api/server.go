@@ -34,6 +34,6 @@ func Run() {
 
 	seed.Load(server.DB)
 
-	server.Run(os.Getenv("PORT"))
+	server.Run(":" + os.Getenv("PORT"))
 
 }
