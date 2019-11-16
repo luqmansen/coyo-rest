@@ -7,13 +7,16 @@ import (
 )
 
 type Pengajuan struct {
-	ID        uint64    `gorm:"primary_key;auto_increment" json:"id"`
-	Nasabah   User      `json:"nasabah"`
-	NasabahId uint64    `gorm:"foreign_key" json:"id_nasabah"`
-	AjuanKTA  string 	`gorm:"foreign_key" json:"ajuan_kta"`
-	JumlahPinjaman string `gorm:"foreign_key" json:"jumlah_pinjaman"`
-	CreatedAt time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"created_at"`
-	UpdatedAt time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"updated_at"`
+	ID             uint64    `gorm:"primary_key;auto_increment" json:"id"`
+	Nama           string    `gorm:"size:255;not null;" json:"nama"`
+	Telepon        string    `gorm:"size:255;not null;" json:"telepon"`
+	TempatLahir    string    `gorm:"size:255;not null;" json:"tempat_lahir"`
+	TanggalLahir   string    `gorm:"size:255;not null;" json:"tanggal_lahir"`
+	KotaDomisili   string    `gorm:"size:255;not null;" json:"kota_domisili"`
+	AjuanKTA       string    `gorm:"foreign_key" json:"ajuan_kta"`
+	JumlahPinjaman string    `gorm:"foreign_key" json:"jumlah_pinjaman"`
+	CreatedAt      time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"created_at"`
+	UpdatedAt      time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"updated_at"`
 }
 
 func (p *Pengajuan) PreparePengajuan() {
@@ -23,7 +26,7 @@ func (p *Pengajuan) PreparePengajuan() {
 }
 func (k *Pengajuan) ValidatePengajuan() error {
 
-	if k.Nasabah.Nama == "" {
+	if k.Nama == "" {
 		return errors.New("Required Name")
 	}
 	return nil
@@ -32,10 +35,10 @@ func (k *Pengajuan) ValidatePengajuan() error {
 func (p *Pengajuan) AddEntryPengajuan(db *gorm.DB) (interface{}, error) {
 	var err error
 
-	err = db.Debug().Model(&User{}).Create(&p.Nasabah).Error
-	if err != nil {
-		return &User{}, err
-	}
+	//err = db.Debug().Model(&User{}).Create(&p.Nasabah).Error
+	//if err != nil {
+	//	return &User{}, err
+	//}
 	err = db.Debug().Model(&Pengajuan{}).Create(&p).Error
 	if err != nil {
 		return &Pengajuan{}, err
