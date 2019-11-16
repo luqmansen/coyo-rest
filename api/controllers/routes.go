@@ -10,6 +10,6 @@ func (s *Server) initializeRoutes() {
 
 	//Pengajuan Routes
 	//s.Router.HandleFunc("/pengajuan/all", middlewares.SetMiddlewareJSON(s.GetPengajuan)).Methods("GET")
-	s.Router.HandleFunc("/pengajuan/add", middlewares.SetMiddlewareJSON(s.AddEntryPengajuan)).Methods("POST")
+	s.Router.HandleFunc("/kta/pengajuan/add", middlewares.SetMiddlewareJSON(s.AddEntryPengajuan)).Methods("POST")
 
 }
