@@ -40,6 +40,7 @@ func (server *Server) AddEntryPengajuan(w http.ResponseWriter, r *http.Request) 
 	//}
 	dataCreated, err := data.AddEntryPengajuan(server.DB)
 	if err != nil {
+		fmt.Println(err)
 		formattedError := formaterror.FormatError(err.Error())
 		responses.ERROR(w, http.StatusInternalServerError, formattedError)
 		return
