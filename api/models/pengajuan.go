@@ -47,13 +47,12 @@ func (p *Pengajuan) ValidatePengajuan() error {
 	if p.KotaDomisili == "" {
 		return errors.New("Required Domisili")
 	}
+	if p.JumlahPenghasilan == "" {
+		return errors.New("Required penghasilan")
+	}
 
 	if p.JumlahPinjaman == "" {
 		return errors.New("Required jumlahpinjam")
-	}
-
-	if p.JumlahPenghasilan == "" {
-		return errors.New("Required penghasilan")
 	}
 
 	if p.AjuanKTA == "" {
