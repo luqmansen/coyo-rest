@@ -57,7 +57,9 @@ func (server *Server) GetKTAs(w http.ResponseWriter, r *http.Request) {
 		responses.ERROR(w, http.StatusInternalServerError, err)
 		return
 	}
-	responses.JSON(w, http.StatusOK, posts)
+	data := make(map[string]interface{})
+	data["data"] = posts
+	responses.JSON(w, http.StatusOK, data)
 }
 
 //func (server *Server) GetPost(w http.ResponseWriter, r *http.Request) {
