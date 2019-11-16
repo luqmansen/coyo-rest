@@ -15,10 +15,6 @@ func (server *Server) AddEntryPengajuan(w http.ResponseWriter, r *http.Request) 
 		log.Print(err)
 	}
 
-	//fmt.Println(r)
-	for key, value := range r.Form {
-		fmt.Printf("%s - %s \n", key, value)
-	}
 	data := models.Pengajuan{}
 	for data.ValidatePengajuan() != nil {
 		data.Nama = r.Form.Get("nama")
