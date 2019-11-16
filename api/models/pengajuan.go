@@ -31,27 +31,35 @@ func (p *Pengajuan) ValidatePengajuan() error {
 	if p.Nama == "" {
 		return errors.New("Required Name")
 	}
+
+	if p.TanggalLahir == "" {
+		return errors.New("Required tanggal lahir")
+	}
+
+	if p.TempatLahir == "" {
+		return errors.New("Required tmpat lahir")
+	}
+
 	if p.Telepon == "" {
 		return errors.New("Required Telepon")
 	}
-	if p.TempatLahir == "" {
-		return errors.New("Required ttl")
-	}
-	if p.TanggalLahir == "" {
-		return errors.New("Required ttl")
-	}
+
 	if p.KotaDomisili == "" {
-		return errors.New("Required domisili")
+		return errors.New("Required Domisili")
 	}
-	if p.AjuanKTA == "" {
-		return errors.New("Required ajuankta")
-	}
+
 	if p.JumlahPinjaman == "" {
 		return errors.New("Required jumlahpinjam")
 	}
+
 	if p.JumlahPenghasilan == "" {
 		return errors.New("Required penghasilan")
 	}
+
+	if p.AjuanKTA == "" {
+		return errors.New("Required ajuankta")
+	}
+
 	return nil
 }
 
