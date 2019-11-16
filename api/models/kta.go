@@ -10,18 +10,18 @@ import (
 )
 
 type KTA struct {
-	ID                 uint64    `gorm:"primary_key;auto_increment" json:"id"`
-	Title              string    `gorm:"size:255;not null;" json:"title"`
-	Icon               string    `gorm:"size:255;not null;" json:"icon"`
-	ShortDescription   string    `gorm:"size:255;not null;" json:"short_description"`
-	Pembiayaan         string    `gorm:"size:255;not null;" json:"pembiayaan"`
-	Tenor              string    `gorm:"size:255;not null;" json:"tenor"`
-	Pencairan          string    `gorm:"size:255;not null;" json:"pencairan"`
-	SukuBunga          string    `gorm:"size:255;not null;" json:"suku_bunga"`
-	BiayaProses        string    `gorm:"size:255;not null;" json:"biaya_proses"`
-	BiayaAdmin         string    `gorm:"size:255;not null;" json:"biaya_admin"`
-	BiayaAsuransi      string    `gorm:"size:255;not null;" json:"biaya_asuransi"`
-	BiayaProvisi      string    `gorm:"size:255;not null;" json:"biaya_provisi"`
+	ID               uint64 `gorm:"primary_key;auto_increment" json:"id"`
+	Name             string `gorm:"size:255;not null;" json:"title"`
+	Icon             string `gorm:"size:255;not null;" json:"icon"`
+	ShortDescription string `gorm:"size:255;not null;" json:"short_description"`
+	Pembiayaan       string `gorm:"size:255;not null;" json:"pembiayaan"`
+	Tenor            string `gorm:"size:255;not null;" json:"tenor"`
+	Pencairan        string `gorm:"size:255;not null;" json:"pencairan"`
+	SukuBunga        string `gorm:"size:255;not null;" json:"suku_bunga"`
+	BiayaProses      string `gorm:"size:255;not null;" json:"biaya_proses"`
+	BiayaAdmin       string `gorm:"size:255;not null;" json:"biaya_admin"`
+	BiayaAsuransi    string `gorm:"size:255;not null;" json:"biaya_asuransi"`
+	BiayaProvisi     string `gorm:"size:255;not null;" json:"biaya_provisi"`
 	BeaMaterai         string    `gorm:"size:255;not null;" json:"bea_materai"`
 	BiayaPelunasan     string    `gorm:"size:255;not null;" json:"biaya_pelunasan"`
 	BiayaKeterlambatan string    `gorm:"size:255;not null;" json:"biaya_keterlambatan"`
@@ -33,34 +33,33 @@ type KTA struct {
 	UpdatedAt          time.Time `gorm:"default:CURRENT_TIMESTAMP" json:"updated_at"`
 }
 
-func (p *KTA) Prepare() {
-	p.ID = 0
-	p.Title = html.EscapeString(strings.TrimSpace(p.Title))
-	p.CreatedAt = time.Now()
-	p.UpdatedAt = time.Now()
+func (k *KTA) Prepare() {
+	k.ID = 0
+	k.Name = html.EscapeString(strings.TrimSpace(k.Name))
+	k.CreatedAt = time.Now()
+	k.UpdatedAt = time.Now()
 }
 
-func (p *KTA) Validate() error {
+func (k *KTA) Validate() error {
 
-	if p.Title == "" {
-		return errors.New("Required Title")
+	if k.Name == "" {
+		return errors.New("Required Name")
 	}
-
 	return nil
 }
 
-func (p *KTA) AddEntry(db *gorm.DB) (*KTA, error) {
+func (k *KTA) AddEntry(db *gorm.DB) (*KTA, error) {
 	var err error
 
-	err = db.Debug().Model(&KTA{}).Create(&p).Error
+	err = db.Debug().Model(&KTA{}).Create(&k).Error
 	if err != nil {
 		return &KTA{}, err
 	}
-	return p, nil
+	return k, nil
 }
 
 
-func (p *KTA) FindAllPosts(db *gorm.DB) (*[]KTA, error) {
+func (k *KTA) FindAllKTAs(db *gorm.DB) (*[]KTA, error) {
 	var err error
 	ktas := []KTA{}
 	err = db.Debug().Model(&KTA{}).Limit(100).Find(&ktas).Error
@@ -98,7 +97,7 @@ func (p *KTA) FindAllPosts(db *gorm.DB) (*[]KTA, error) {
 //	var err error
 //	// db = db.Debug().Model(&Post{}).Where("id = ?", pid).Take(&Post{}).UpdateColumns(
 //	// 	map[string]interface{}{
-//	// 		"title":      p.Title,
+//	// 		"title":      p.Name,
 //	// 		"content":    p.Description,
 //	// 		"updated_at": time.Now(),
 //	// 	},
@@ -113,7 +112,7 @@ func (p *KTA) FindAllPosts(db *gorm.DB) (*[]KTA, error) {
 //	// 		return &Post{}, err
 //	// 	}
 //	// }
-//	err = db.Debug().Model(&KTA{}).Where("id = ?", p.ID).Updates(KTA{Title: p.Title, Description: p.Description, UpdatedAt: time.Now()}).Error
+//	err = db.Debug().Model(&KTA{}).Where("id = ?", p.ID).Updates(KTA{Name: p.Name, Description: p.Description, UpdatedAt: time.Now()}).Error
 //	if err != nil {
 //		return &KTA{}, err
 //	}

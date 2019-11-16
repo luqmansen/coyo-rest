@@ -10,21 +10,21 @@ import (
 	"net/http"
 )
 
-func (server *Server) InsertKTA(w http.ResponseWriter, r *http.Request) {
+func (server *Server) AddEntry(w http.ResponseWriter, r *http.Request) {
 
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		responses.ERROR(w, http.StatusUnprocessableEntity, err)
 		return
 	}
-	post := models.KTA{}
-	err = json.Unmarshal(body, &post)
+	data := models.KTA{}
+	err = json.Unmarshal(body, &data)
 	if err != nil {
 		responses.ERROR(w, http.StatusUnprocessableEntity, err)
 		return
 	}
-	post.Prepare()
-	err = post.Validate()
+	data.Prepare()
+	err = data.Validate()
 	if err != nil {
 		responses.ERROR(w, http.StatusUnprocessableEntity, err)
 		return
@@ -34,25 +34,25 @@ func (server *Server) InsertKTA(w http.ResponseWriter, r *http.Request) {
 	//	responses.ERROR(w, http.StatusUnauthorized, errors.New("Unauthorized"))
 	//	return
 	//}
-	//if uid != post.AuthorID {
+	//if uid != data.AuthorID {
 	//	responses.ERROR(w, http.StatusUnauthorized, errors.New(http.StatusText(http.StatusUnauthorized)))
 	//	return
 	//}
-	postCreated, err := post.AddEntry(server.DB)
+	dataCreated, err := data.AddEntry(server.DB)
 	if err != nil {
 		formattedError := formaterror.FormatError(err.Error())
 		responses.ERROR(w, http.StatusInternalServerError, formattedError)
 		return
 	}
-	w.Header().Set("Lacation", fmt.Sprintf("%s%s/%d", r.Host, r.URL.Path, postCreated.ID))
-	responses.JSON(w, http.StatusCreated, postCreated)
+	w.Header().Set("Location", fmt.Sprintf("%s%s/%d", r.Host, r.URL.Path, dataCreated.ID))
+	responses.JSON(w, http.StatusCreated, dataCreated)
 }
 
-func (server *Server) GetPosts(w http.ResponseWriter, r *http.Request) {
+func (server *Server) GetKTAs(w http.ResponseWriter, r *http.Request) {
 
-	post := models.KTA{}
+	kta := models.KTA{}
 
-	posts, err := post.FindAllPosts(server.DB)
+	posts, err := kta.FindAllKTAs(server.DB)
 	if err != nil {
 		responses.ERROR(w, http.StatusInternalServerError, err)
 		return
