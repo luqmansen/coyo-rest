@@ -77,3 +77,21 @@ func (p *Pengajuan) AddEntryPengajuan(db *gorm.DB) (interface{}, error) {
 
 	return p, nil
 }
+
+func (p *Pengajuan) GetHistory(db *gorm.DB) (*[]Pengajuan, error) {
+	var err error
+	pn := []Pengajuan{}
+	err = db.Debug().Model(&Pengajuan{}).Limit(100).Find(&pn).Error
+	if err != nil {
+		return &[]Pengajuan{}, err
+	}
+	//if len(ktas) > 0 {
+	//	for i, _ := range ktas {
+	//		err := db.Debug().Model(&User{}).Where("id = ?", ktas[i].AuthorID).Take(&ktas[i].Author).Error
+	//		if err != nil {
+	//			return &[]KTA{}, err
+	//		}
+	//	}
+	//}
+	return &pn, nil
+}
