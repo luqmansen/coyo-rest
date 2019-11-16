@@ -9,7 +9,7 @@ import (
 
 var ktas = []models.KTA{
 	models.KTA{
-		ID:                 0,
+		ID:                 1,
 		Title:              "CTBC Bank KTA Dana Cinta",
 		Icon:               "https://kreditgogo.com/img/logo/ctbc-bank.png",
 		ShortDescription:   "Butuh dana pinjaman? KTA Dana Cinta dari Bank CTBC memberikan anda pinjaman dengan proses cepat, angsuran tetap, dan suku bunga rendah. Dengan nilai pinjaman hingga Rp200 juta, KTA Dana cinta cocok untuk keperluan bisnis anda.",
@@ -32,7 +32,7 @@ var ktas = []models.KTA{
 		UpdatedAt:          time.Time{},
 	},
 	models.KTA{
-		ID:                 1,
+		ID:                 2,
 		Title:              "Bank DBS Dana Bantuan Sahabat",
 		Icon:               "https://kreditgogo.com/img/logo/bank-dbs.png",
 		ShortDescription:   "Bank DBS menghadirkan produk Dana Bantuan Sahabat yang memberi anda fasilitas pinjaman dana tunai tanpa agunan dengan suku bunga rendah, proses cepat dan plafon pinjaman sampai dengan 200 juta.",
